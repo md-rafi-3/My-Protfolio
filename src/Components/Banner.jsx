@@ -1,0 +1,82 @@
+import React from "react";
+import { FaDownload, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
+
+
+export default function Banner() {
+  return (
+    <section className="bg-base-300 text-white py-16 h-[80vh] px-6 md:px-20 flex flex-col md:flex-row items-center justify-between">
+     
+      {/* Left content */}
+      <div className="md:w-1/2 space-y-6">
+        <h1 className="text-4xl font-bold text-accent-content">
+          Hi, I'm <span >Rafi</span>
+        </h1>
+        <h2 className="text-primary text-2xl font-mono">
+          <Typewriter
+            words={[ "MERN Stack Developer",
+  "Frontend Developer",
+  "React Developer",
+  "Web Developer"]}
+            loop={true}
+            cursor
+            cursorStyle="|"
+            typeSpeed={70}
+            deleteSpeed={50}
+            delaySpeed={2000}
+          />
+        </h2>
+        <p className="text-gray-400 max-w-md">
+          A passionate developer crafting modern and responsive web applications.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex items-center space-x-4">
+          <a
+            href="/path-to-your-resume.pdf"
+            download
+            className="flex items-center bg-primary text-white hover:bg-pink-500 font-semibold px-5 py-3 rounded-md transition"
+          >
+            <FaDownload className="mr-2" /> Download Resume
+          </a>
+
+          {/* Social icons */}
+          <a
+            href="https://github.com/yourusername"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black p-3 rounded-md hover:bg-gray-800"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://linkedin.com/in/yourprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black p-3 rounded-md hover:bg-gray-800"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
+          <a
+            href="https://facebook.com/yourprofile"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-black p-3 rounded-md hover:bg-gray-800"
+            aria-label="Facebook"
+          >
+            <FaFacebook />
+          </a>
+        </div>
+      </div>
+
+      {/* Right image placeholder */}
+      <div className="mt-12 md:mt-0 md:w-1/2 flex justify-center">
+        <div className="w-72 h-72 rounded-full border-4 border-pink-400 bg-gray-300 flex items-center justify-center text-gray-500 text-2xl font-semibold">
+          400 x 400
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaDownload, FaGithub, FaLinkedin, FaFacebook } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
+import rafiImg from "../assets/rafi pro.jpg"
 
 
 export default function Banner() {
@@ -30,17 +31,9 @@ export default function Banner() {
           A passionate developer crafting modern and responsive web applications.
         </p>
 
-        {/* Buttons */}
-        <div className="flex items-center space-x-4">
-          <a
-            href="/path-to-your-resume.pdf"
-            download
-            className="flex items-center bg-primary text-white hover:bg-pink-500 font-semibold px-5 py-3 rounded-md transition"
-          >
-            <FaDownload className="mr-2" /> Download Resume
-          </a>
 
-          {/* Social icons */}
+        <div className="flex items-center space-x-4">
+             {/* Social icons */}
           <a
             href="https://github.com/yourusername"
             target="_blank"
@@ -69,12 +62,25 @@ export default function Banner() {
             <FaFacebook />
           </a>
         </div>
+
+        {/* Buttons */}
+        <div className="flex items-center ">
+          <a
+            href="/path-to-your-resume.pdf"
+            download
+            className="flex items-center bg-primary text-white hover:bg-pink-500 font-semibold px-5 py-3 rounded-md transition"
+          >
+            <FaDownload className="mr-2" /> Download Resume
+          </a>
+
+         
+        </div>
       </div>
 
       {/* Right image placeholder */}
       <div className="mt-12 md:mt-0 md:w-1/2 flex justify-center">
-        <div className="w-72 h-72 rounded-full border-4 border-pink-400 bg-gray-300 flex items-center justify-center text-gray-500 text-2xl font-semibold">
-          400 x 400
+        <div className="w-72 h-72 rounded-full border-4 border-primary  flex items-center justify-center  text-2xl font-semibold">
+          <img className="rounded-full" src={rafiImg} alt="" />
         </div>
       </div>
     </section>

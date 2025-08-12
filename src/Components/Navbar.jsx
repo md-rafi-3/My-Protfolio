@@ -1,50 +1,106 @@
-import React from 'react';
-import DarkMode from './DarkMode';
+import React, { useState, useEffect } from "react";
+import { FaBars, FaCode, FaTimes } from "react-icons/fa";
+import DarkMode from "./DarkMode";
+
 
 const Navbar = () => {
-    return (
-       <div className="navbar bg-base-100 shadow-sm rounded-4xl ">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
+
+  // Detect active section on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 200;
+      navLinks.forEach((link) => {
+        const section = document.querySelector(link.href);
+        if (section) {
+          const top = section.offsetTop;
+          const height = section.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(link.href.replace("#", ""));
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav className="bg-primary text-white fixed w-full z-50 shadow-lg">
+      <div className="max-w-6xl mx-auto px-5 md:px-0 py-3 flex justify-between items-center">
+        
+        {/* Logo */}
+        <h1 className="text-2xl font-bold flex items-center gap-1"><FaCode />Rafi</h1>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex gap-6 items-center">
+          {navLinks.map((link) => (
+            <li key={link.name}>
+              <a
+                href={link.href}
+                className={`transition duration-200 ${
+                  activeSection === link.href.replace("#", "")
+                    ? "text-pink-300 font-semibold border-b-2 border-pink-300 pb-1"
+                    : "hover:text-pink-300"
+                }`}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+
+          {/* Dark Mode Button */}
+          <li>
+            <DarkMode></DarkMode>
+          </li>
+        </ul>
+
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex items-center gap-5">
+          {/* Dark Mode Button for Mobile */}
+          <DarkMode></DarkMode>
+
+          <button onClick={() => setIsOpen(!isOpen)}>
+            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
       </div>
-      <ul
-        tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li><a>Item 1</a></li>
-        <li>
-          <a>Parent</a>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </li>
-        <li><a>Item 3</a></li>
-      </ul>
-    </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
-      <li><a>Item 1</a></li>
-      <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li>
-      <li><a>Item 3</a></li>
-    </ul>
-  </div>
-  <div className="navbar-end mr-5">
-    <DarkMode></DarkMode>
-  </div>
-</div>
-    );
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden bg-pink-800 overflow-hidden transition-all duration-500 ease-in-out ${
+          isOpen ? "max-h-60" : "max-h-0"
+        }`}
+      >
+        <ul className="flex flex-col gap-4 px-6 py-4">
+          {navLinks.map((link) => (
+            <li key={link.name}>
+              <a
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={`block transition duration-200 ${
+                  activeSection === link.href.replace("#", "")
+                    ? "text-pink-300 font-semibold border-l-4 border-pink-300 pl-2"
+                    : "hover:text-pink-300"
+                }`}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;

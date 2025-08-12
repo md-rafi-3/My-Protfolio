@@ -6,7 +6,7 @@ import rafiImg from "../assets/rafi pro.jpg"
 
 export default function Banner() {
   return (
-    <section className="bg-base-300 text-white py-16 h-[80vh] px-6 md:px-20 flex flex-col-reverse md:flex-row items-center justify-between gap-8 ">
+    <section className="bg-base-300 text-white py-16 h-[90vh] px-6 md:px-20 flex flex-col-reverse md:flex-row items-center justify-between gap-8 ">
      
       {/* Left content */}
       <div className="md:w-1/2 space-y-6">

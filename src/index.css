@@ -12,7 +12,7 @@
     --color-base-300:#F0DBE3;    
     --color-accent:#616B61;
      --color-accent-content:#2b0815;
-     --color-neutral:#E3E8E3;
+     --color-neutral:#000000;
   
     
   }
@@ -27,6 +27,6 @@
     --color-base-300:#242428;
     --color-accent:#ABBAAB;
      --color-accent-content:#ffffff;
-     --color-neutral:#293229;
+     --color-neutral:#ffffff;
     
   }

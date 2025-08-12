@@ -1,5 +1,6 @@
 import React from "react";
 import { FiGithub, FiExternalLink, FiBookmark } from "react-icons/fi";
+import { TbWorld } from "react-icons/tb";
 
 // PortfolioProjects.jsx
 // React + Tailwind CSS + DaisyUI + react-icons
@@ -9,7 +10,7 @@ import { FiGithub, FiExternalLink, FiBookmark } from "react-icons/fi";
 
 export default function ProjectCard({ project }) {
   return (
-    <article className="rounded-xl border border-[rgba(0,0,0,0.35)] bg-neutral-900 shadow-lg overflow-hidden">
+    <article className="rounded-xl  bg-base-200 shadow-lg overflow-hidden">
       <div className="h-44 bg-gradient-to-b from-gray-200 to-gray-300 flex items-center justify-center relative">
         {project.image ? (
           <img
@@ -42,8 +43,8 @@ export default function ProjectCard({ project }) {
       <div className="p-5 bg-transparent text-white border-t border-[rgba(255,255,255,0.03)]">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <h3 className="text-xl font-bold text-cyan-400">{project.title}</h3>
-            <p className="text-sm text-gray-300 mt-3 line-clamp-3">{project.description}</p>
+            <h3 className="text-xl font-bold text-accent-content">{project.title}</h3>
+            <p className="text-sm text-gray-400 mt-3 line-clamp-3">{project.description}</p>
 
             <div className="flex flex-wrap gap-2 mt-4">
               {project.tech?.map((t) => (
@@ -75,7 +76,7 @@ export default function ProjectCard({ project }) {
             className="flex-1 rounded-full overflow-hidden shadow-inner"
             aria-label={`Live demo for ${project.title}`}
           >
-            <div className="w-full bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 px-4 py-2 flex items-center justify-center">
+            <div className="btn btn-block btn-primary text-white flex items-center justify-center">
               <FiExternalLink className="mr-2" />
               <span className="text-sm font-medium">View Details</span>
             </div>
@@ -87,12 +88,26 @@ export default function ProjectCard({ project }) {
                 href={project.repo}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-ghost btn-sm rounded-md px-3"
+                className="btn btn-ghost bg-black text-white btn-sm rounded-md px-3"
+                aria-label={`Live Preview ${project.title}`}
+              >
+                <TbWorld />
+              </a>
+            )}
+
+            {project.repo && (
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-ghost bg-black text-white btn-sm rounded-md px-3"
                 aria-label={`Repo for ${project.title}`}
               >
                 <FiGithub />
               </a>
             )}
+
+            
           </div>
         </div>
       </div>

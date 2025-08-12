@@ -33,16 +33,16 @@ const DarkMode = () => {
 
     
     return (
-        <div className='btn btn-circle border-0 bg-base-200 '>
+        <div className='btn btn-circle border-0 bg-primary '>
             <label className="swap swap-rotate">
   {/* this hidden checkbox controls the state */}
   <input type="checkbox" onChange={toggleTheme}/>
 
   {/* sun icon */}
- <IoSunnyOutline  className="swap-on h-5 w-5 fill-current" />
+ <IoSunnyOutline  className="swap-on  h-5 w-5 fill-current" />
 
   {/* moon icon */}
-  <IoIosMoon className="swap-off h-5 w-5 fill-current" />
+  <IoIosMoon className="swap-off text-white h-5 w-5 fill-current" />
 </label>
         </div>
     );

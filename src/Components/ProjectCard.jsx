@@ -64,21 +64,14 @@ export default function ProjectCard({ project }) {
 
         <div className="mt-5 flex items-center justify-between gap-4">
           
-          <a
-            href={project.demo || '#'}
-            target="_blank"
-            rel="noreferrer"
-            className="flex-1 rounded-full overflow-hidden shadow-inner"
-            aria-label={`Live demo for ${project.title}`}
-          >
-            <Link to={`/project-details/:${project._id}`} className="btn btn-block btn-primary text-white flex items-center justify-center">
+         
+           <Link to={`/project-details/${project._id}`} className="btn btn-block btn-primary text-white flex  flex-1 items-center justify-center">
               <FiExternalLink className="mr-2" />
               <span className="text-sm font-medium">View Details</span>
             </Link>
-          </a>
 
           <div className="flex gap-2">
-            {project.repo && (
+          
               <a
                 href={project.demo}
                 target="_blank"
@@ -88,9 +81,9 @@ export default function ProjectCard({ project }) {
               >
                 <TbWorld />
               </a>
-            )}
+          
 
-            {project.repo && (
+           
               <a
                 href={project.repo}
                 target="_blank"
@@ -100,7 +93,7 @@ export default function ProjectCard({ project }) {
               >
                 <FiGithub />
               </a>
-            )}
+       
 
             
           </div>

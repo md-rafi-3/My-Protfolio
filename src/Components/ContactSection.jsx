@@ -4,7 +4,7 @@ import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 const ContactSection = () => {
   return (
-    <section className="bg-base-300 py-16 px-6 md:px-16">
+    <section id="contact" className="bg-base-300 py-16 px-6 md:px-16">
       <h2 className="text-3xl font-bold text-center mb-12">Get In Touch</h2>
       <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
         

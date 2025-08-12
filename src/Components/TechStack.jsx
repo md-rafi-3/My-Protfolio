@@ -53,7 +53,7 @@ export default function TechStackTimeline() {
 
   
   return (
-    <section className="py-12">
+    <section id="skills" className="py-12">
       <div className="max-w-7xl mx-auto hidden md:block">
         <h2 className="text-3xl font-bold text-center mb-10 text-accent-content">
           My Tech Stack
@@ -126,7 +126,7 @@ export default function TechStackTimeline() {
                 {items.map((tech) => (
                   <div
                     key={tech.name}
-                    className="flex flex-col items-center p-4 bg-white   rounded-lg shadow hover:shadow-lg transition"
+                    className="flex flex-col items-center p-4 bg-base-200   rounded-lg shadow hover:shadow-lg transition"
                   >
                     <img src={tech.icon} alt={tech.name} className="h-12 mb-3" />
                     <p className="text-sm font-medium text-accent-content">

@@ -3,7 +3,7 @@ import rafiImg from "../assets/ai rafi.jpg"
 
 const AboutMe = () => {
   return (
-    <section className="bg-base-100 py-16 px-4 md:px-16">
+    <section id="about" className="bg-base-100 py-16 px-4 md:px-16">
         <h2 className="text-3xl font-bold text-accent-content mb-6 text-center">About Me</h2>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
         {/* Image Section */}

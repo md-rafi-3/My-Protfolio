@@ -1,74 +1,94 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaCode, FaTimes } from "react-icons/fa";
+import { HashLink } from "react-router-hash-link";
 import DarkMode from "./DarkMode";
-
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", to: "/#home", id: "home" },
+    { name: "About", to: "/#about", id: "about" },
+    { name: "Skills", to: "/#skills", id: "skills" },
+    { name: "Projects", to: "/#projects", id: "projects" },
+    { name: "Contact", to: "/#contact", id: "contact" },
   ];
 
-  // Detect active section on scroll
+  // Scroll with offset (for fixed navbar height)
+  const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -80;
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 200;
-      navLinks.forEach((link) => {
-        const section = document.querySelector(link.href);
-        if (section) {
-          const top = section.offsetTop;
-          const height = section.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(link.href.replace("#", ""));
+      const scrollPosition = window.pageYOffset + 90; // 90px offset for navbar height
+
+      let current = "home";
+
+      for (const section of navLinks) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          if (scrollPosition >= offsetTop) {
+            current = section.id;
           }
         }
-      });
+      }
+      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav className="bg-primary text-white fixed w-full z-50 shadow-lg">
       <div className="max-w-6xl mx-auto px-5 md:px-0 py-3 flex justify-between items-center">
-        
         {/* Logo */}
-        <h1 className="text-2xl font-bold flex items-center gap-1"><FaCode />Rafi</h1>
+        <HashLink
+          smooth
+          to="/#home"
+          scroll={(el) => scrollWithOffset(el)}
+          className="btn-ghost btn bg-primary text-white hover:bg-primary border-none transition-none"
+        >
+          <h1 className="text-2xl font-bold flex items-center gap-1">
+            <FaCode /> Rafi
+          </h1>
+        </HashLink>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 items-center">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a
-                href={link.href}
-                className={`transition duration-200 ${
-                  activeSection === link.href.replace("#", "")
+              <HashLink
+                smooth
+                to={link.to}
+                scroll={(el) => scrollWithOffset(el)}
+                className={`cursor-pointer transition duration-200 hover:text-pink-300 ${
+                  activeSection === link.id
                     ? "text-pink-300 font-semibold border-b-2 border-pink-300 pb-1"
-                    : "hover:text-pink-300"
+                    : ""
                 }`}
+                onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </HashLink>
             </li>
           ))}
 
           {/* Dark Mode Button */}
           <li>
-            <DarkMode></DarkMode>
+            <DarkMode />
           </li>
         </ul>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-5">
-          {/* Dark Mode Button for Mobile */}
-          <DarkMode></DarkMode>
-
+          <DarkMode />
           <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
@@ -84,17 +104,19 @@ const Navbar = () => {
         <ul className="flex flex-col gap-4 px-6 py-4">
           {navLinks.map((link) => (
             <li key={link.name}>
-              <a
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`block transition duration-200 ${
-                  activeSection === link.href.replace("#", "")
+              <HashLink
+                smooth
+                to={link.to}
+                scroll={(el) => scrollWithOffset(el)}
+                className={`block cursor-pointer transition duration-200 hover:text-pink-300 ${
+                  activeSection === link.id
                     ? "text-pink-300 font-semibold border-l-4 border-pink-300 pl-2"
-                    : "hover:text-pink-300"
+                    : ""
                 }`}
+                onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </HashLink>
             </li>
           ))}
         </ul>

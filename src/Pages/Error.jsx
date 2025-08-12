@@ -3,7 +3,8 @@ import errorLottie from '../assets/errorPage.json';
 import Lottie from 'lottie-react';
 import { FaHome } from 'react-icons/fa';
 import { NavLink } from 'react-router';
-import Navbar from '../../Shared/Navbar/Navbar';
+import Navbar from '../Components/Navbar';
+
 
 
 

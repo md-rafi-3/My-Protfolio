@@ -4,19 +4,9 @@ import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 
-const PortfolioProjects = () => {
-     const projects = [
-    {
-      title: 'Task Management App',
-      description:
-        'Collaborative project management tool with real-time updates and team collaboration features.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'JWT'],
-      demo: '#',
-      repo: '#',
-      image: null,
-    },
-    // Add more projects as needed
-  ];
+const PortfolioProjects = ({projects}) => {
+   
+
     return (
        <section id='projects' className="max-w-6xl mx-auto px-4 py-8">
       <h2 className="text-3xl font-bold text-accent-content text-center mb-6">My Projects</h2>

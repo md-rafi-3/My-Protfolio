@@ -1,6 +1,7 @@
 import React from "react";
 import { FiGithub, FiExternalLink, FiBookmark } from "react-icons/fi";
 import { TbWorld } from "react-icons/tb";
+import { Link } from "react-router";
 
 // PortfolioProjects.jsx
 // React + Tailwind CSS + DaisyUI + react-icons
@@ -58,13 +59,7 @@ export default function ProjectCard({ project }) {
             </div>
           </div>
 
-          <button
-            className="ml-3 h-10 w-10 rounded-lg border border-white/6 flex items-center justify-center hover:bg-white/5 transition-colors"
-            aria-label="bookmark"
-            title="Save project"
-          >
-            <FiBookmark size={18} />
-          </button>
+         
         </div>
 
         <div className="mt-5 flex items-center justify-between gap-4">
@@ -76,16 +71,16 @@ export default function ProjectCard({ project }) {
             className="flex-1 rounded-full overflow-hidden shadow-inner"
             aria-label={`Live demo for ${project.title}`}
           >
-            <div className="btn btn-block btn-primary text-white flex items-center justify-center">
+            <Link to={`/project-details/:${project._id}`} className="btn btn-block btn-primary text-white flex items-center justify-center">
               <FiExternalLink className="mr-2" />
               <span className="text-sm font-medium">View Details</span>
-            </div>
+            </Link>
           </a>
 
           <div className="flex gap-2">
             {project.repo && (
               <a
-                href={project.repo}
+                href={project.demo}
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-ghost bg-black text-white btn-sm rounded-md px-3"

@@ -13,15 +13,18 @@ const router = createBrowserRouter ([
     children:[
       {
         index:true,
-        element:<Home></Home>
+        element:<Home></Home>,
+        loader:()=>fetch("https://protfolio-server-jade.vercel.app/projects")
       },
       {
-        path:"project-details",
-        element:<ProjectDetails></ProjectDetails>
+        path:"project-details/:id",
+        element:<ProjectDetails></ProjectDetails>,
+        loader:({params})=>fetch(`https://protfolio-server-jade.vercel.app/${params.id}`)
       },
       {
         path:"all-projects",
-        element:<AllProjects></AllProjects>
+        element:<AllProjects></AllProjects>,
+         loader:()=>fetch("https://protfolio-server-jade.vercel.app/all-projects")
       }
     ]
   },

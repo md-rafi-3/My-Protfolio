@@ -6,7 +6,7 @@ import rafiImg from "../assets/rafi pro.jpg"
 
 export default function Banner() {
   return (
-    <section className="bg-base-300 text-white py-16 h-[80vh] px-6 md:px-20 flex flex-col md:flex-row items-center justify-between">
+    <section className="bg-base-300 text-white py-16 h-[80vh] px-6 md:px-20 flex flex-col-reverse md:flex-row items-center justify-between gap-8 ">
      
       {/* Left content */}
       <div className="md:w-1/2 space-y-6">
@@ -78,10 +78,10 @@ export default function Banner() {
       </div>
 
       {/* Right image placeholder */}
-      <div className="mt-12 md:mt-0 md:w-1/2 flex justify-center">
-        <div className="w-72 h-72 rounded-full border-4 border-primary  flex items-center justify-center  text-2xl font-semibold">
-          <img className="rounded-full" src={rafiImg} alt="" />
-        </div>
+      <div className="mt-12 md:mt-0 md:w-1/2  flex justify-center">
+        
+          <img  className="md:w-72 md:h-72 w-60 h-60 rounded-full border-4 border-primary  flex items-center justify-center  text-2xl " src={rafiImg} alt="" />
+        
       </div>
     </section>
   );
